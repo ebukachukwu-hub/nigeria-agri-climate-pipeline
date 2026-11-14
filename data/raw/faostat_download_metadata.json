@@ -1,0 +1,38 @@
+{
+    "dataset_code": "QCL",
+    "dataset_name": "Production: Crops and livestock products",
+    "source": "https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_All_Data_(Normalized).zip",
+    "catalogue_last_updated": "2025-12-31",
+    "downloaded_at_utc": "2026-11-14T17:04:16.599694+00:00",
+    "file_size_bytes": 33921825,
+    "sha256": "c5835418c18f9322e7decbd6800f93a216eaae3cdfa31acb08f0518c0c6d6853",
+    "csv_files": [
+        "Production_Crops_Livestock_E_All_Data_(Normalized).csv",
+        "Production_Crops_Livestock_E_AreaCodes.csv",
+        "Production_Crops_Livestock_E_Elements.csv",
+        "Production_Crops_Livestock_E_Flags.csv",
+        "Production_Crops_Livestock_E_ItemCodes.csv"
+    ],
+    "archive_members": [
+        {
+            "filename": "Production_Crops_Livestock_E_All_Data_(Normalized).csv",
+            "size_bytes": 545005770
+        },
+        {
+            "filename": "Production_Crops_Livestock_E_AreaCodes.csv",
+            "size_bytes": 5391
+        },
+        {
+            "filename": "Production_Crops_Livestock_E_Elements.csv",
+            "size_bytes": 404
+        },
+        {
+            "filename": "Production_Crops_Livestock_E_Flags.csv",
+            "size_bytes": 169
+        },
+        {
+            "filename": "Production_Crops_Livestock_E_ItemCodes.csv",
+            "size_bytes": 10838
+        }
+    ]
+}
