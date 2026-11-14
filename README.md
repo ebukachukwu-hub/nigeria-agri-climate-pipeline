@@ -1,100 +1,166 @@
 # Nigeria Crop Production & Climate Trends Pipeline
 
-An end-to-end data engineering project that integrates Nigerian agricultural production statistics with climate observations to explore historical relationships between crop production, rainfall and temperature.
+An end-to-end data engineering project integrating Nigerian agricultural production statistics with climate observations to explore historical relationships between crop production, rainfall and temperature.
 
-## Project Overview
+**Project Status:** Environment Setup Completed | Data Ingestion Next
+
+---
+
+## 1. Project Overview
 
 Agricultural production is influenced by several factors, including weather patterns, farming practices, soil conditions and economic conditions.
 
-This project combines agricultural data from **FAOSTAT** with climate observations from **NASA POWER** to build a reusable data pipeline for Nigeria.
+This project aims to combine agricultural production statistics from **FAOSTAT** with climate observations from **NASA POWER** to develop a reusable data pipeline for Nigeria.
 
-The pipeline will use PySpark to ingest, clean, validate, integrate and transform datasets into analytical tables.
+Using Python and PySpark, the pipeline will ingest, clean, validate, integrate and transform datasets into analytical tables that support historical agricultural and climate analysis.
 
-**Important:** This is an exploratory data engineering and analysis project. Observed relationships between climate indicators and agricultural production will not be presented as proof of causation.
+**Analytical consideration:** This project investigates statistical relationships between climate indicators and agricultural production. Correlation or association will not be interpreted as proof of causation.
 
-## Objectives
+## 2. Project Objectives
 
 - Ingest agricultural production data from FAOSTAT.
 - Retrieve historical rainfall and temperature observations from NASA POWER.
-- Build a Bronze, Silver and Gold data architecture.
-- Standardise crop names, dates, measurements and geographical identifiers.
+- Implement a Bronze, Silver and Gold data architecture.
+- Standardise crop names, dates, geographical identifiers and measurement units.
 - Handle missing values and investigate data-quality anomalies.
 - Integrate agricultural and climate datasets.
 - Produce analytical datasets for reporting and visualisation.
-- Implement automated data-quality tests.
-- Automate testing with GitHub Actions.
+- Implement automated data-quality tests using pytest.
+- Automate testing through GitHub Actions.
 
-## Data Sources
+## 3. Data Sources
 
-### 1. FAOSTAT
+### FAOSTAT — Agricultural Production
 
 Source: https://www.fao.org/faostat/
 
-Expected variables:
-- Country
-- Crop
-- Year
-- Production quantity
-- Yield
+Expected indicators:
+
+- Crop production quantity
 - Harvested area
+- Crop yield
+- Reporting year
+- Country and crop identifiers
 - Measurement units
 
-### 2. NASA POWER
+### NASA POWER — Climate Observations
 
 Source: https://power.larc.nasa.gov/
 
 Expected climate indicators:
-- Precipitation
-- Temperature
-- Monthly observations
+
+- Monthly precipitation
+- Temperature indicators
+- Historical observations
 - Geographic coordinates
 
-The precise indicators, units, geographical coverage and date ranges will be documented after inspecting the source responses.
+The exact variables, units, geographical coverage and reporting periods will be documented after inspecting the source datasets.
 
-## Technology Stack
+## 4. Technology Stack
 
-| Area | Technology |
+| Category | Technology |
 |---|---|
 | Programming | Python |
 | Data Engineering | PySpark, Apache Spark |
-| Data Sources | FAOSTAT, NASA POWER |
+| Agricultural Data | FAOSTAT API |
+| Climate Data | NASA POWER API |
 | Data Processing | Pandas, PyArrow |
+| API Integration | Requests |
 | Testing | pytest |
-| API Requests | Requests |
 | Environment Management | Python venv |
-| Version Control | Git, GitHub |
+| Version Control | Git and GitHub |
 | CI/CD | GitHub Actions |
 | Reporting | Python-based analytics and visualisations |
 
-## Pipeline Architecture
+## 5. Development Environment
 
-```text
-FAOSTAT API             NASA POWER API
-     |                        |
-     v                        v
-     +----------+-------------+
-                |
-                v
-         BRONZE LAYER
-        Raw source data
-                |
-                v
-         SILVER LAYER
-     Cleaning and validation
-     Standardisation
-     Climate-agriculture integration
-                |
-                v
-          GOLD LAYER
-      Analytical datasets
-      Annual crop indicators
-      Climate summaries
-                |
-                v
-       REPORTS & VISUALISATIONS
+The local development environment has been configured and successfully tested.
+
+| Component | Version |
+|---|---|
+| Python | 3.14.6 |
+| Java | OpenJDK 25.0.4 LTS |
+| PySpark | 4.3.0 |
+| Pandas | 2.x — installed after compatibility adjustment |
+| Requests | 2.34.2 |
+| pytest | 9.2.0 |
+| Operating System | Windows |
+| Spark Execution | Local mode (`local[2]`) |
+
+### Spark Verification
+
+A local Spark session was successfully created using:
+
+```python
+from pyspark.sql import SparkSession
+
+spark = (
+    SparkSession.builder
+    .master("local[2]")
+    .appName("AgriClimateEnvironmentCheck")
+    .getOrCreate()
+)
+
+print("Spark version:", spark.version)
+print("Test row count:", spark.range(5).count())
+
+spark.stop()
 ```
 
-## Project Structure
+**Verification result:**
+
+```text
+Spark version: 4.3.0
+Test row count: 5
+```
+
+This confirms that the local Spark environment can execute a basic DataFrame operation.
+
+## 6. Pipeline Architecture
+
+The project will follow a Medallion Architecture.
+
+```text
+       FAOSTAT API             NASA POWER API
+            |                        |
+            v                        v
+       AGRICULTURAL DATA        CLIMATE DATA
+            |                        |
+            +-----------+------------+
+                        |
+                        v
+                  BRONZE LAYER
+                 Raw source data
+                        |
+                        v
+                  SILVER LAYER
+              Cleaning and validation
+              Standardisation
+              Data integration
+                        |
+                        v
+                   GOLD LAYER
+               Analytical datasets
+               Annual crop indicators
+               Climate summaries
+                        |
+                        v
+              REPORTS & VISUALISATIONS
+```
+
+### Bronze Layer
+
+Preserve ingested source data in its original form, together with relevant metadata.
+
+### Silver Layer
+
+Clean, standardise and validate the source datasets before integrating agricultural and climate observations.
+
+### Gold Layer
+
+Produce analytical datasets suitable for historical comparisons, reporting and visualisation.
+
+## 7. Project Structure
 
 ```text
 nigeria-agri-climate-pipeline/
@@ -116,6 +182,7 @@ nigeria-agri-climate-pipeline/
 ├── tests/
 ├── config/
 ├── reports/
+│
 ├── .github/
 │   └── workflows/
 │
@@ -124,52 +191,75 @@ nigeria-agri-climate-pipeline/
 └── .gitignore
 ```
 
-## Development Milestones
+## 8. Development Milestones
 
 | Milestone | Deliverable | Status |
 |---|---|---|
-| 1 | Project workspace and environment setup | In progress |
-| 2 | FAOSTAT data ingestion | Pending |
-| 3 | NASA POWER climate data ingestion | Pending |
-| 4 | Bronze layer implementation | Pending |
-| 5 | Silver layer cleaning and integration | Pending |
-| 6 | Gold analytical datasets | Pending |
-| 7 | Data-quality validation and anomaly investigation | Pending |
-| 8 | Automated testing with pytest | Pending |
-| 9 | GitHub Actions workflow | Pending |
-| 10 | Documentation, reporting and final analysis | Pending |
+| 1 | Project workspace and folder structure | Completed |
+| 2 | Git and GitHub repository setup | Completed |
+| 3 | Python virtual environment and dependencies | Completed |
+| 4 | Java and local Spark verification | Completed |
+| 5 | FAOSTAT data ingestion | Pending |
+| 6 | NASA POWER climate data ingestion | Pending |
+| 7 | Bronze layer implementation | Pending |
+| 8 | Silver layer cleaning and integration | Pending |
+| 9 | Gold analytical datasets | Pending |
+| 10 | Data-quality validation and anomaly investigation | Pending |
+| 11 | Automated testing with pytest | Pending |
+| 12 | GitHub Actions workflow | Pending |
+| 13 | Reporting, analysis and final documentation | Pending |
 
-## Data Quality and Validation
+Milestones will be updated as individual components are implemented and tested.
 
-The pipeline will implement checks for:
+## 9. Data Quality and Validation
 
-- Missing or invalid values.
+The pipeline will incorporate data-quality checks covering:
+
+- Missing and invalid values.
 - Duplicate records.
 - Unexpected crop names and measurement units.
 - Invalid geographical coordinates.
-- Inconsistent dates and reporting periods.
+- Inconsistent reporting periods.
 - Unreasonable production, yield and climate values.
 - Unexpected changes in record counts after transformations.
 
-Validation rules will be documented and tested rather than silently dropping questionable records.
+Questionable records will be investigated and documented rather than silently removed.
 
-## Analytical Direction
+## 10. Analytical Questions
 
-The final Gold datasets will support questions such as:
+The final analytical datasets will support questions such as:
 
 1. How has the production of selected Nigerian crops changed over time?
 2. How have rainfall and temperature patterns changed across selected locations?
-3. Do changes in annual climate indicators correspond with changes in crop yield?
+3. Do changes in annual climate indicators correspond with changes in crop yields?
 4. Which crops and geographical areas show notable historical patterns?
-5. Where are the limitations of the available data?
+5. What limitations affect the reliability of the analysis?
 
-## Project Status
+## 11. Testing Strategy
 
-**Current phase:** Project setup and environment configuration.
+The project will use pytest to test individual ingestion, transformation and validation functions.
 
-Implementation progress will be updated as each milestone is completed and tested.
+Testing will cover:
 
-## Author
+- API response handling.
+- Data schema consistency.
+- Transformation accuracy.
+- Duplicate detection.
+- Missing-value handling.
+- Data integration rules.
+- Analytical output validation.
+
+GitHub Actions will subsequently automate these tests whenever changes are pushed to the repository.
+
+## 12. Project Status
+
+**Current phase:** Environment setup completed.
+
+**Next milestone:** FAOSTAT agricultural data ingestion.
+
+The next implementation stage will involve retrieving Nigerian crop-production records, inspecting the API response, documenting source metadata and preserving the original data.
+
+## 13. Author
 
 **Enoch Kanikwu**
 
@@ -178,4 +268,4 @@ Implementation progress will be updated as each milestone is completed and teste
 
 ---
 
-*This project is developed for educational, analytical and portfolio purposes. Findings will be interpreted with appropriate attention to data quality, geographical coverage and statistical limitations.*
+*Developed as an educational, analytical and professional data engineering portfolio project. Findings will be interpreted with appropriate consideration for data quality, geographical coverage and statistical limitations.*
