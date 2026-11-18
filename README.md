@@ -10,7 +10,7 @@ Agriculture plays an important role in Nigeria's economy, food security and empl
 
 This project aims to build a reproducible data pipeline that combines historical agricultural statistics with climate observations to support data-driven exploration of agricultural trends in Nigeria.
 
-The project will focus on:
+The project focuses on:
 
 - Historical crop production trends in Nigeria.
 - Changes in crop yield and harvested area.
@@ -97,6 +97,89 @@ The QCL dataset was identified through its metadata, including its dataset code,
 This approach provides access to the required agricultural statistics while supporting an automated and reproducible download workflow.
 
 The API investigation is retained as part of the project's data-source discovery and engineering decision-making process.
+
+## FAOSTAT Dataset Download and Validation
+
+The QCL dataset was downloaded programmatically using Python Requests.
+
+The downloader implements:
+
+- Dataset URL retrieval from the saved FAOSTAT catalogue.
+- Chunk-based downloading to avoid loading the entire archive into memory.
+- HTTP response validation.
+- Downloaded file-size verification against the server's Content-Length when available.
+- ZIP archive integrity testing.
+- Identification of CSV files contained in the archive.
+- SHA-256 checksum generation.
+- Download metadata generation.
+
+The resulting metadata is saved in:
+
+`data/raw/faostat_download_metadata.json`
+
+This supports data provenance and reproducibility.
+
+## FAOSTAT Raw Dataset Inspection
+
+The downloaded FAOSTAT QCL archive was successfully inspected directly from its ZIP container without manually extracting the complete dataset.
+
+Five CSV files were identified:
+
+1. `Production_Crops_Livestock_E_All_Data_(Normalized).csv`
+2. `Production_Crops_Livestock_E_AreaCodes.csv`
+3. `Production_Crops_Livestock_E_Elements.csv`
+4. `Production_Crops_Livestock_E_Flags.csv`
+5. `Production_Crops_Livestock_E_ItemCodes.csv`
+
+### Main Dataset Schema
+
+The normalized agricultural production dataset contains 14 columns:
+
+| Column | Description |
+|---|---|
+| Area Code | FAOSTAT geographical identifier |
+| Area Code (M49) | UN geographical code |
+| Area | Country or geographical area |
+| Item Code | FAOSTAT commodity identifier |
+| Item Code (CPC) | Commodity classification code |
+| Item | Crop or agricultural commodity |
+| Element Code | Measurement identifier |
+| Element | Measurement type |
+| Year Code | Reporting year code |
+| Year | Reporting year |
+| Unit | Measurement unit |
+| Value | Recorded measurement |
+| Flag | Observation status |
+| Note | Additional information |
+
+### Accompanying Reference Files
+
+| File | Purpose |
+|---|---|
+| AreaCodes.csv | Geographical identifiers and country names |
+| Elements.csv | Agricultural measurement definitions |
+| Flags.csv | Observation status descriptions |
+| ItemCodes.csv | Commodity identifiers and descriptions |
+
+### Initial Engineering Observations
+
+- The dataset uses a normalized structure, with observations organized by geographical area, commodity, measurement element and reporting year.
+- The Element field distinguishes measurements such as harvested area, production and yield.
+- The Flag field provides information about observation status, including official, estimated, imputed, missing and externally sourced values.
+- Geographical and commodity classification codes require careful handling to preserve leading zeros.
+- Four accompanying reference CSV files provide geographical, measurement, flag and commodity classifications.
+
+### Data Engineering Decisions
+
+The pipeline will preserve original source identifiers and observation flags.
+
+Missing values will be distinguished from genuine zero measurements. Measurement units will be considered when transforming or aggregating observations.
+
+The accompanying reference files will be retained to support data validation and interpretation.
+
+The initial schema inspection report is generated programmatically and saved at:
+
+`reports/faostat_schema_inspection.json`
 
 ## Technology Stack
 
@@ -245,7 +328,14 @@ nigeria-agri-climate-pipeline/
 - [x] Develop the FAOSTAT catalogue exploration script.
 - [x] Develop automated FAOSTAT dataset downloader.
 - [x] Validate downloaded ZIP archive and generate SHA-256 checksum.
-- [ ] Inspect FAOSTAT CSV schema and sample records.
+- [x] Inspect FAOSTAT ZIP archive contents.
+- [x] Identify all five CSV files.
+- [x] Inspect the main dataset's 14-column schema.
+- [x] Inspect accompanying reference-table schemas.
+- [x] Generate and save the schema inspection report.
+- [ ] Profile the complete FAOSTAT dataset.
+- [ ] Identify Nigeria-specific agricultural records.
+- [ ] Investigate measurement elements, flags and missing values.
 - [ ] Complete FAOSTAT raw-data ingestion.
 - [ ] Implement NASA POWER climate data ingestion.
 - [ ] Build Bronze data layer.
@@ -306,6 +396,6 @@ Bowen University
 
 ## Project Status
 
-<text>Active development — Data ingestion and source exploration phase.</text>
+**Active development — FAOSTAT data profiling phase.**
 
 This project is being developed as a practical demonstration of data engineering, statistical analysis and data-driven agricultural research.
