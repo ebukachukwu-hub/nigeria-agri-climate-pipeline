@@ -1,0 +1,2001 @@
+{
+    "basic_information": {
+        "total_records": 17539,
+        "unique_commodities": 121,
+        "unique_elements": 8,
+        "unique_years": 64,
+        "first_year": "1961",
+        "last_year": "2024"
+    },
+    "crop_metrics": {
+        "Area harvested": {
+            "records": 3818,
+            "commodities": 62,
+            "years": 64
+        },
+        "Production": {
+            "records": 6700,
+            "commodities": 108,
+            "years": 64
+        },
+        "Yield": {
+            "records": 3757,
+            "commodities": 63,
+            "years": 64
+        }
+    },
+    "measurement_unit_distribution": [
+        {
+            "element": "Area harvested",
+            "unit": "ha",
+            "records": 3818,
+            "commodities": 62,
+            "years": 64
+        },
+        {
+            "element": "Laying",
+            "unit": "1000 An",
+            "records": 128,
+            "commodities": 2,
+            "years": 64
+        },
+        {
+            "element": "Milk Animals",
+            "unit": "An",
+            "records": 128,
+            "commodities": 2,
+            "years": 64
+        },
+        {
+            "element": "Producing Animals/Slaughtered",
+            "unit": "1000 An",
+            "records": 128,
+            "commodities": 2,
+            "years": 64
+        },
+        {
+            "element": "Producing Animals/Slaughtered",
+            "unit": "An",
+            "records": 1088,
+            "commodities": 17,
+            "years": 64
+        },
+        {
+            "element": "Production",
+            "unit": "1000 No",
+            "records": 64,
+            "commodities": 1,
+            "years": 64
+        },
+        {
+            "element": "Production",
+            "unit": "t",
+            "records": 6636,
+            "commodities": 108,
+            "years": 64
+        },
+        {
+            "element": "Stocks",
+            "unit": "1000 An",
+            "records": 192,
+            "commodities": 3,
+            "years": 64
+        },
+        {
+            "element": "Stocks",
+            "unit": "An",
+            "records": 576,
+            "commodities": 9,
+            "years": 64
+        },
+        {
+            "element": "Stocks",
+            "unit": "No",
+            "records": 64,
+            "commodities": 1,
+            "years": 64
+        },
+        {
+            "element": "Yield",
+            "unit": "No/An",
+            "records": 64,
+            "commodities": 1,
+            "years": 64
+        },
+        {
+            "element": "Yield",
+            "unit": "kg/ha",
+            "records": 3693,
+            "commodities": 62,
+            "years": 64
+        },
+        {
+            "element": "Yield/Carcass Weight",
+            "unit": "g/An",
+            "records": 256,
+            "commodities": 4,
+            "years": 64
+        },
+        {
+            "element": "Yield/Carcass Weight",
+            "unit": "kg/An",
+            "records": 704,
+            "commodities": 11,
+            "years": 64
+        }
+    ],
+    "top_commodities": [
+        {
+            "commodity": "Hen eggs in shell, fresh",
+            "records": 320,
+            "years": 64,
+            "measurement_types": 4
+        },
+        {
+            "commodity": "Beef and Buffalo Meat, primary",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Carrots and turnips",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Cashew nuts, in shell",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Cassava, fresh",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Cereals, primary",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Chillies and peppers, dry (Capsicum spp., Pimenta spp.), raw",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Chillies and peppers, green (Capsicum spp. and Pimenta spp.)",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Citrus Fruit, Total",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Cocoa beans",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Coconuts, in shell",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Coffee, green",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Cow peas, dry",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Eggs Primary",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Fibre Crops, Fibre Equivalent",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Fonio",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Fruit Primary",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Ginger, raw",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Green corn (maize)",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        },
+        {
+            "commodity": "Groundnuts, excluding shelled",
+            "records": 192,
+            "years": 64,
+            "measurement_types": 3
+        }
+    ],
+    "year_coverage": {
+        "total_series": 285,
+        "series_with_internal_missing_years": 0,
+        "series_without_internal_missing_years": 285,
+        "gap_details": []
+    },
+    "crop_metric_coverage": {
+        "required_metrics": [
+            "Production",
+            "Area harvested",
+            "Yield"
+        ],
+        "complete_metric_commodities": [
+            {
+                "commodity": "Bananas",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 102
+            },
+            {
+                "commodity": "Carrots and turnips",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Cashew nuts, in shell",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Cassava, fresh",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Cereals, primary",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Chillies and peppers, dry (Capsicum spp., Pimenta spp.), raw",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Chillies and peppers, green (Capsicum spp. and Pimenta spp.)",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Citrus Fruit, Total",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Cocoa beans",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Coconuts, in shell",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Coffee, green",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Cow peas, dry",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Fibre Crops, Fibre Equivalent",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Fonio",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Fruit Primary",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Ginger, raw",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Green corn (maize)",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Green garlic",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 86
+            },
+            {
+                "commodity": "Groundnuts, excluding shelled",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Karite nuts (sheanuts)",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Kenaf, and other textile bast fibres, raw or retted",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 172
+            },
+            {
+                "commodity": "Kola nuts",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Maize (corn)",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Mangoes, guavas and mangosteens",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Melonseed",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Millet",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Natural rubber in primary forms",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Oil palm fruit",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Oilcrops, Cake Equivalent",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Oilcrops, Oil Equivalent",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Okra",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Onions and shallots, dry (excluding dehydrated)",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 102
+            },
+            {
+                "commodity": "Onions and shallots, green",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Other citrus fruit, n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Other fibre crops, raw, n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 101
+            },
+            {
+                "commodity": "Other fruits, n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Other nuts (excluding wild edible nuts and groundnuts), in shell, n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 168
+            },
+            {
+                "commodity": "Other oil seeds, n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 132
+            },
+            {
+                "commodity": "Other pulses n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Other stimulant, spice and aromatic crops, n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Other vegetables, fresh n.e.c.",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Papayas",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Pineapples",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Plantains and cooking bananas",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 158
+            },
+            {
+                "commodity": "Potatoes",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Pulses, Total",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Rice",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Roots and Tubers, Total",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Seed cotton, unginned",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Sesame seed",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Sorghum",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Soya beans",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Sugar Crops Primary",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Sugar cane",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Sweet potatoes",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Taro",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Tomatoes",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Treenuts, Total",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Unmanufactured tobacco",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Vegetables Primary",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Wheat",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Yams",
+                "available_metrics": [
+                    "Area harvested",
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "ha",
+                    "kg/ha",
+                    "t"
+                ],
+                "record_count": 192
+            }
+        ],
+        "incomplete_commodities": [
+            {
+                "commodity": "Beef and Buffalo Meat, primary",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Beer of barley, malted",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Butter and Ghee",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Butter of cow milk",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Buttermilk, dry",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 10
+            },
+            {
+                "commodity": "Cattle fat, unrendered",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Cheese (All Kinds)",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Cheese from skimmed cow milk",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Coconut oil",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Cotton lint, ginned",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Cotton seed",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Cottonseed oil",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Edible offal of cattle, fresh, chilled or frozen",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Edible offal of goat, fresh, chilled or frozen",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Edible offal of pigs, fresh, chilled or frozen",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Edible offal of sheep, fresh, chilled or frozen",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Eggs Primary",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Fat of pigs",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Game meat, fresh, chilled or frozen",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Goat fat, unrendered",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Green tea (not fermented), black tea (fermented) and partly fermented tea, in immediate packings of a content not exceeding 3 kg",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 4
+            },
+            {
+                "commodity": "Groundnut oil",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Hen eggs in shell, fresh",
+                "available_metrics": [
+                    "Production",
+                    "Yield"
+                ],
+                "available_units": [
+                    "1000 No",
+                    "No/An",
+                    "t"
+                ],
+                "record_count": 192
+            },
+            {
+                "commodity": "Meat of cattle with the bone, fresh or chilled",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Meat of chickens, fresh or chilled",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Meat of goat, fresh or chilled",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Meat of pig with the bone, fresh or chilled",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Meat of sheep, fresh or chilled",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Meat, Poultry",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Meat, Total",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Milk, Total",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Molasses",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Oil of palm kernel",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Oil of sesame seed",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Palm kernels",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Palm oil",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Raw cane or beet sugar (centrifugal only)",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Raw hides and skins of cattle",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Raw hides and skins of goats or kids",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Raw hides and skins of sheep or lambs",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Raw milk of cattle",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Sheep and Goat Meat",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Sheep fat, unrendered",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 64
+            },
+            {
+                "commodity": "Skim Milk & Buttermilk, Dry",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 10
+            },
+            {
+                "commodity": "Skim milk of cows",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            },
+            {
+                "commodity": "Soya bean oil",
+                "available_metrics": [
+                    "Production"
+                ],
+                "available_units": [
+                    "t"
+                ],
+                "record_count": 63
+            }
+        ],
+        "complete_count": 62,
+        "incomplete_count": 46
+    },
+    "same_year_metric_coverage": {
+        "required_metrics": [
+            "Production",
+            "Area harvested",
+            "Yield"
+        ],
+        "commodities_with_same_year_coverage": [
+            {
+                "commodity": "Bananas",
+                "years_with_all_metrics": 34,
+                "first_complete_year": "1991",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Carrots and turnips",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Cashew nuts, in shell",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Cassava, fresh",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Cereals, primary",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Chillies and peppers, dry (Capsicum spp., Pimenta spp.), raw",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Chillies and peppers, green (Capsicum spp. and Pimenta spp.)",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Citrus Fruit, Total",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Cocoa beans",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Coconuts, in shell",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Coffee, green",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Cow peas, dry",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Fibre Crops, Fibre Equivalent",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Fonio",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Fruit Primary",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Ginger, raw",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Green corn (maize)",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Green garlic",
+                "years_with_all_metrics": 18,
+                "first_complete_year": "2007",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Groundnuts, excluding shelled",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Karite nuts (sheanuts)",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Kenaf, and other textile bast fibres, raw or retted",
+                "years_with_all_metrics": 44,
+                "first_complete_year": "1981",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Kola nuts",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Maize (corn)",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Mangoes, guavas and mangosteens",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Melonseed",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Millet",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Natural rubber in primary forms",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Oil palm fruit",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Oilcrops, Cake Equivalent",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Oilcrops, Oil Equivalent",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Okra",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Onions and shallots, dry (excluding dehydrated)",
+                "years_with_all_metrics": 34,
+                "first_complete_year": "1991",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Onions and shallots, green",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other citrus fruit, n.e.c.",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other fibre crops, raw, n.e.c.",
+                "years_with_all_metrics": 3,
+                "first_complete_year": "1991",
+                "last_complete_year": "1993"
+            },
+            {
+                "commodity": "Other fruits, n.e.c.",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other nuts (excluding wild edible nuts and groundnuts), in shell, n.e.c.",
+                "years_with_all_metrics": 40,
+                "first_complete_year": "1985",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other oil seeds, n.e.c.",
+                "years_with_all_metrics": 34,
+                "first_complete_year": "1991",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other pulses n.e.c.",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other stimulant, spice and aromatic crops, n.e.c.",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Other vegetables, fresh n.e.c.",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Papayas",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Pineapples",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Plantains and cooking bananas",
+                "years_with_all_metrics": 30,
+                "first_complete_year": "1961",
+                "last_complete_year": "1990"
+            },
+            {
+                "commodity": "Potatoes",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Pulses, Total",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Rice",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Roots and Tubers, Total",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Seed cotton, unginned",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Sesame seed",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Sorghum",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Soya beans",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Sugar Crops Primary",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Sugar cane",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Sweet potatoes",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Taro",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Tomatoes",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Treenuts, Total",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Unmanufactured tobacco",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Vegetables Primary",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Wheat",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            },
+            {
+                "commodity": "Yams",
+                "years_with_all_metrics": 64,
+                "first_complete_year": "1961",
+                "last_complete_year": "2024"
+            }
+        ],
+        "commodity_count": 62
+    },
+    "duplicate_investigation": {
+        "duplicate_groups": 0,
+        "records_in_duplicate_groups": 0,
+        "key_columns": [
+            "Area Code",
+            "Item Code",
+            "Element Code",
+            "Year"
+        ]
+    },
+    "missing_values": {
+        "Value": 285,
+        "Flag": 0,
+        "Note": 17100,
+        "Unit": 0,
+        "Year": 0,
+        "missing_value_flag_distribution": {
+            "M": 285
+        }
+    }
+}

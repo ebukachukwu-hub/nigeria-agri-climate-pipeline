@@ -1,0 +1,34 @@
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment variables
+.env
+.env.*
+
+# Raw data: never commit downloaded datasets
+data/raw/*
+!data/raw/.gitkeep
+
+# Explicitly exclude extracted source data
+data/raw/extracted/
+
+# Bronze layer
+data/bronze/*
+!data/bronze/.gitkeep
+
+# Silver layer
+data/silver/*
+!data/silver/.gitkeep
+
+# Gold layer
+data/gold/*
+!data/gold/.gitkeep
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
