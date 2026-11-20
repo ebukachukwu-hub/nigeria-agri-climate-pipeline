@@ -1,401 +1,516 @@
 # Nigeria Crop Production & Climate Trends Pipeline
 
-An end-to-end data engineering project integrating agricultural production statistics from the Food and Agriculture Organization (FAO) with climate observations from NASA POWER to explore historical relationships between crop production, yield, rainfall and temperature in Nigeria.
+An end-to-end data engineering project that integrates historical agricultural production data from the Food and Agriculture Organization (FAO) with climate observations from NASA POWER to investigate long-term agricultural and climate trends in Nigeria.
 
-The project demonstrates practical data engineering skills through automated data ingestion, distributed processing with PySpark, data quality validation, medallion architecture and analytical dataset development.
+The project uses Python, PySpark, and a medallion data architecture to build a reproducible pipeline for ingesting, processing, validating, and analysing agricultural and climate datasets.
 
 ## Project Overview
 
-Agriculture plays an important role in Nigeria's economy, food security and employment. However, agricultural production is influenced by several factors, including rainfall patterns, temperature variations and other environmental conditions.
+Agriculture plays an important role in Nigeria's economy, food security, and employment. However, understanding how agricultural production patterns relate to climate conditions requires reliable historical data and a structured analytical approach.
 
-This project aims to build a reproducible data pipeline that combines historical agricultural statistics with climate observations to support data-driven exploration of agricultural trends in Nigeria.
+This project aims to build a data pipeline that combines historical crop production statistics with climate variables such as rainfall and temperature.
 
-The project focuses on:
+The resulting dataset will support exploratory analysis of agricultural trends and statistical relationships between crop production, yield, rainfall, and temperature.
 
-- Historical crop production trends in Nigeria.
-- Changes in crop yield and harvested area.
-- Rainfall and temperature patterns.
-- Relationships between agricultural production and climate variables.
-- Identification of missing, inconsistent and unusual observations.
-
-**Important:** Statistical associations identified through this project will not automatically be interpreted as evidence of causation.
+**Important:** The project investigates statistical relationships and associations. Correlation alone does not establish that climate conditions caused a change in agricultural production.
 
 ## Project Objectives
 
-1. Retrieve historical crop production statistics from FAOSTAT.
-2. Collect corresponding historical climate observations from NASA POWER.
-3. Build automated and reproducible data ingestion processes.
-4. Implement a medallion architecture using Bronze, Silver and Gold data layers.
-5. Process and transform datasets using PySpark.
-6. Perform data quality checks and investigate anomalies.
-7. Develop analytical datasets for agricultural and climate trend analysis.
-8. Automate testing and pipeline validation using GitHub Actions.
+- Ingest historical agricultural production data from FAOSTAT.
+- Retrieve historical climate observations from NASA POWER.
+- Build a scalable data processing workflow using PySpark.
+- Implement the Medallion Architecture (Bronze, Silver, and Gold).
+- Perform data cleaning, standardisation, and validation.
+- Integrate agricultural and climate datasets using appropriate geographical and temporal dimensions.
+- Analyse historical crop production, harvested area, yield, rainfall, and temperature trends.
+- Generate analytical datasets suitable for reporting and visualisation.
+- Apply software engineering practices, including version control, testing, and documentation.
 
 ## Data Sources
 
-### 1. FAOSTAT – Agricultural Production Statistics
+### 1. FAOSTAT — Agricultural Production Data
 
-**Source:** [FAOSTAT](https://www.fao.org/faostat/en/#data/QCL)
+**Organisation:** Food and Agriculture Organization of the United Nations (FAO)
 
-Selected dataset:
+**Dataset:** Production: Crops and livestock products
 
-- Dataset code: `QCL`
-- Dataset name: Production: Crops and livestock products.
-- Frequency: Annual.
-- Format: Normalized CSV distributed through a ZIP archive.
+**Dataset code:** QCL
 
-The dataset contains agricultural statistics such as:
+**Source catalogue:** https://bulks-faostat.fao.org/production/datasets_E.json
 
-- Area harvested.
-- Production quantity.
-- Yield.
-- Country and commodity information.
-- Reporting years and measurement units.
+**Dataset download:** https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_All_Data_(Normalized).zip
 
-The catalogue reported 4,209,110 records for the selected dataset.
+The FAOSTAT dataset contains historical agricultural statistics, including:
 
-### 2. NASA POWER – Climate Observations
+- Crop production
+- Area harvested
+- Yield
+- Livestock-related production indicators
+- Commodity classifications
+- Geographical identifiers
+- Observation flags and metadata
 
-**Source:** [NASA POWER](https://power.larc.nasa.gov/)
+**Initial dataset profiling results:**
 
-NASA POWER will provide historical climate observations, including:
+| Metric | Result |
+|---|---:|
+| Total records | 4,209,110 |
+| Total columns | 14 |
+| Geographical areas | 244 |
+| Commodities | 301 |
+| Measurement elements | 8 |
+| Historical coverage | 1961–2024 |
+| Nigeria records | 17,539 |
+| Nigerian commodities | 121 |
 
-- Precipitation.
-- Temperature.
-- Other relevant meteorological variables.
+The complete normalized dataset is downloaded as a ZIP archive. Only the main normalized CSV is extracted for the initial profiling process.
 
-The climate dataset will be aligned with agricultural production records using appropriate geographical and temporal dimensions.
+### 2. NASA POWER — Climate Data
 
-## FAOSTAT API Investigation and Ingestion Decision
+**Organisation:** NASA
 
-During the initial data-source exploration, an attempt was made to access the FAOSTAT API through:
+**Platform:** Prediction of Worldwide Energy Resources (POWER)
 
-`https://faostatservices.fao.org/api/v1/en/groupsanddomains`
+**Website:** https://power.larc.nasa.gov/
 
-The request returned:
+NASA POWER provides meteorological and solar-related observations that can support agricultural and environmental analysis.
 
-`HTTP 401 – Unauthorized`
+Climate variables planned for this project include:
 
-The response indicated that an Authorization Header was missing.
+- Precipitation
+- Mean air temperature
+- Maximum air temperature
+- Minimum air temperature
 
-Further investigation of the official FAOSTAT API documentation established that the API requires Bearer Token authentication.
-
-Since an authenticated API token was not available for this project, the unauthenticated API approach could not be used.
-
-Rather than allowing this to block the ingestion process, an alternative approach was investigated.
-
-The public FAOSTAT bulk-download catalogue was identified:
-
-`https://bulks-faostat.fao.org/production/datasets_E.json`
-
-The catalogue was successfully accessed without API authentication and returned 69 available datasets.
-
-The QCL dataset was identified through its metadata, including its dataset code, update date, reported file size, record count and download location.
-
-**Engineering decision:** The project uses FAOSTAT's public bulk-download service for the initial ingestion process instead of the authenticated API endpoint.
-
-This approach provides access to the required agricultural statistics while supporting an automated and reproducible download workflow.
-
-The API investigation is retained as part of the project's data-source discovery and engineering decision-making process.
-
-## FAOSTAT Dataset Download and Validation
-
-The QCL dataset was downloaded programmatically using Python Requests.
-
-The downloader implements:
-
-- Dataset URL retrieval from the saved FAOSTAT catalogue.
-- Chunk-based downloading to avoid loading the entire archive into memory.
-- HTTP response validation.
-- Downloaded file-size verification against the server's Content-Length when available.
-- ZIP archive integrity testing.
-- Identification of CSV files contained in the archive.
-- SHA-256 checksum generation.
-- Download metadata generation.
-
-The resulting metadata is saved in:
-
-`data/raw/faostat_download_metadata.json`
-
-This supports data provenance and reproducibility.
-
-## FAOSTAT Raw Dataset Inspection
-
-The downloaded FAOSTAT QCL archive was successfully inspected directly from its ZIP container without manually extracting the complete dataset.
-
-Five CSV files were identified:
-
-1. `Production_Crops_Livestock_E_All_Data_(Normalized).csv`
-2. `Production_Crops_Livestock_E_AreaCodes.csv`
-3. `Production_Crops_Livestock_E_Elements.csv`
-4. `Production_Crops_Livestock_E_Flags.csv`
-5. `Production_Crops_Livestock_E_ItemCodes.csv`
-
-### Main Dataset Schema
-
-The normalized agricultural production dataset contains 14 columns:
-
-| Column | Description |
-|---|---|
-| Area Code | FAOSTAT geographical identifier |
-| Area Code (M49) | UN geographical code |
-| Area | Country or geographical area |
-| Item Code | FAOSTAT commodity identifier |
-| Item Code (CPC) | Commodity classification code |
-| Item | Crop or agricultural commodity |
-| Element Code | Measurement identifier |
-| Element | Measurement type |
-| Year Code | Reporting year code |
-| Year | Reporting year |
-| Unit | Measurement unit |
-| Value | Recorded measurement |
-| Flag | Observation status |
-| Note | Additional information |
-
-### Accompanying Reference Files
-
-| File | Purpose |
-|---|---|
-| AreaCodes.csv | Geographical identifiers and country names |
-| Elements.csv | Agricultural measurement definitions |
-| Flags.csv | Observation status descriptions |
-| ItemCodes.csv | Commodity identifiers and descriptions |
-
-### Initial Engineering Observations
-
-- The dataset uses a normalized structure, with observations organized by geographical area, commodity, measurement element and reporting year.
-- The Element field distinguishes measurements such as harvested area, production and yield.
-- The Flag field provides information about observation status, including official, estimated, imputed, missing and externally sourced values.
-- Geographical and commodity classification codes require careful handling to preserve leading zeros.
-- Four accompanying reference CSV files provide geographical, measurement, flag and commodity classifications.
-
-### Data Engineering Decisions
-
-The pipeline will preserve original source identifiers and observation flags.
-
-Missing values will be distinguished from genuine zero measurements. Measurement units will be considered when transforming or aggregating observations.
-
-The accompanying reference files will be retained to support data validation and interpretation.
-
-The initial schema inspection report is generated programmatically and saved at:
-
-`reports/faostat_schema_inspection.json`
+The climate dataset will be retrieved for relevant Nigerian geographical locations and aligned with agricultural observations using appropriate temporal and spatial dimensions.
 
 ## Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| Python | Pipeline development |
+| Python | Pipeline development and automation |
 | PySpark | Distributed data processing |
-| Apache Spark | Large-scale data transformation |
-| Pandas | Initial data inspection and supporting analysis |
-| Requests | HTTP data ingestion |
-| PyArrow | Columnar data support |
-| pytest | Automated testing |
-| Git | Version control |
-| GitHub | Source-code management |
-| GitHub Actions | Continuous integration |
-| NASA POWER API | Climate data collection |
-| FAOSTAT | Agricultural production statistics |
+| Apache Spark | Data transformation and aggregation |
+| Pandas | Supporting data inspection and analysis |
+| Requests | API communication and data retrieval |
+| JSON | Metadata and profiling reports |
+| PyArrow | Columnar data processing support |
+| Pytest | Automated testing |
+| Git & GitHub | Version control and project management |
+| VS Code | Development environment |
+| NASA POWER API | Climate data acquisition |
+| FAOSTAT | Agricultural data source |
 
 ## Development Environment
 
-The project is being developed locally using Visual Studio Code.
+The project is developed locally using:
 
-| Component | Installed version |
-|---|---|
-| Python | 3.14.6 |
-| Java | OpenJDK 25.0.4 LTS |
-| PySpark | 4.3.0 |
-| Pandas | 2.x (compatibility-adjusted) |
-| Requests | 2.34.2 |
-| pytest | 9.2.0 |
+- Operating system: Windows 11
+- Python: 3.14.6
+- Java: OpenJDK 25.0.4 LTS (Temurin)
+- PySpark: 4.3.0
+- Git: GitHub version control
+- IDE: Visual Studio Code
 
-A Python virtual environment is used to isolate project dependencies.
-
-### Environment Verification
-
-Spark was successfully initialized in local mode.
-
-Verification command:
-
-```python
-from pyspark.sql import SparkSession
-
-spark = (
-    SparkSession.builder
-    .master("local[2]")
-    .appName("AgriClimateTest")
-    .getOrCreate()
-)
-
-print("Spark version:", spark.version)
-print("Rows:", spark.range(5).count())
-
-spark.stop()
-```
-
-Successful output:
-
-```text
-Spark version: 4.3.0
-Rows: 5
-```
-
-## Project Architecture
-
-The pipeline follows the Medallion Architecture.
-
-```text
-             DATA SOURCES
-                   |
-          -------------------
-          |                 |
-       FAOSTAT           NASA POWER
-          |                 |
-          -------------------
-                   |
-             INGESTION
-                   |
-             BRONZE LAYER
-          (Raw ingested data)
-                   |
-             SILVER LAYER
-       (Cleaned and transformed)
-                   |
-              GOLD LAYER
-        (Analytical datasets)
-                   |
-          ANALYSIS & REPORTING
-```
-
-### Bronze Layer
-
-Stores ingested source data with minimal transformation.
-
-### Silver Layer
-
-Contains cleaned, standardized and validated datasets.
-
-### Gold Layer
-
-Contains aggregated and analytical datasets designed to support agricultural and climate trend analysis.
+Apache Spark was successfully tested in local execution mode using a two-worker local configuration.
 
 ## Repository Structure
 
 ```text
 nigeria-agri-climate-pipeline/
 │
-├── data/
-│   ├── raw/
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
-│
-├── notebooks/
-│
-├── src/
-│   ├── ingestion/
-│   ├── transformations/
-│   ├── validation/
-│   └── analytics/
-│
-├── tests/
-│
-├── config/
-│
-├── reports/
-│
 ├── .github/
 │   └── workflows/
 │
+├── config/
+│
+├── data/
+│   ├── raw/
+│   │   ├── extracted/
+│   │   └── .gitkeep
+│   │
+│   ├── bronze/
+│   │   └── .gitkeep
+│   │
+│   ├── silver/
+│   │   └── .gitkeep
+│   │
+│   └── gold/
+│       └── .gitkeep
+│
+├── notebooks/
+│
+├── reports/
+│   ├── faostat_schema_inspection.json
+│   └── faostat_full_profile.json
+│
+├── src/
+│   ├── ingestion/
+│   │   ├── explore_faostat_catalogue.py
+│   │   ├── download_faostat.py
+│   │   └── inspect_faostat.py
+│   │
+│   ├── transformations/
+│   │
+│   ├── validation/
+│   │
+│   └── analytics/
+│       └── profile_faostat.py
+│
+├── tests/
+│
+├── .gitignore
 ├── requirements.txt
-├── README.md
-└── .gitignore
+└── README.md
 ```
 
-## Completed Development Milestones
+*The repository structure will expand as additional ingestion, transformation, validation, and analytical modules are implemented.*
 
-- [x] Create project workspace and directory structure.
-- [x] Initialize Git repository.
-- [x] Create GitHub repository and connect remote origin.
-- [x] Configure Python virtual environment.
-- [x] Install project dependencies.
-- [x] Install Java and verify Apache Spark.
-- [x] Investigate FAOSTAT API authentication requirements.
-- [x] Identify and access the public FAOSTAT bulk-download catalogue.
-- [x] Identify the QCL agricultural production dataset.
-- [x] Develop the FAOSTAT catalogue exploration script.
-- [x] Develop automated FAOSTAT dataset downloader.
-- [x] Validate downloaded ZIP archive and generate SHA-256 checksum.
-- [x] Inspect FAOSTAT ZIP archive contents.
-- [x] Identify all five CSV files.
-- [x] Inspect the main dataset's 14-column schema.
-- [x] Inspect accompanying reference-table schemas.
-- [x] Generate and save the schema inspection report.
-- [ ] Profile the complete FAOSTAT dataset.
-- [ ] Identify Nigeria-specific agricultural records.
-- [ ] Investigate measurement elements, flags and missing values.
-- [ ] Complete FAOSTAT raw-data ingestion.
-- [ ] Implement NASA POWER climate data ingestion.
-- [ ] Build Bronze data layer.
-- [ ] Build Silver transformation layer.
-- [ ] Build Gold analytical layer.
-- [ ] Implement data quality validation.
-- [ ] Develop automated tests using pytest.
-- [ ] Configure GitHub Actions.
-- [ ] Develop analytical reports and visualizations.
+## Data Engineering Architecture
+
+The project follows the Medallion Architecture.
+
+### Bronze Layer — Raw Data
+
+The Bronze layer will contain source data ingested from FAOSTAT and NASA POWER with minimal modification.
+
+Planned responsibilities:
+
+- Preserve source records.
+- Maintain source metadata.
+- Track ingestion timestamps.
+- Retain original observation flags.
+- Support reproducibility and traceability.
+
+### Silver Layer — Cleaned and Standardised Data
+
+The Silver layer will contain validated and standardised datasets.
+
+Planned transformations:
+
+- Standardise column names and data types.
+- Preserve geographical and commodity identifiers.
+- Handle missing values appropriately.
+- Validate measurement units.
+- Identify duplicate records.
+- Standardise dates and geographical dimensions.
+- Separate crop production observations from livestock-related indicators.
+- Prepare climate observations for integration.
+
+### Gold Layer — Analytical Data
+
+The Gold layer will contain business-ready analytical datasets.
+
+Planned outputs:
+
+- Annual Nigerian crop production trends.
+- Commodity-level production and yield statistics.
+- Harvested-area trends.
+- Historical rainfall and temperature summaries.
+- Integrated crop production and climate datasets.
+- Analytical tables for dashboards and reporting.
+
+## Development Progress
+
+### Completed Milestones
+
+- [x] Created project workspace and directory structure.
+- [x] Initialised Git and connected the GitHub repository.
+- [x] Created Python virtual environment.
+- [x] Installed project dependencies.
+- [x] Installed and verified Java.
+- [x] Installed and tested PySpark.
+- [x] Investigated the FAOSTAT API authentication requirements.
+- [x] Identified the public FAOSTAT bulk download catalogue.
+- [x] Explored the catalogue and identified the QCL dataset.
+- [x] Developed a FAOSTAT catalogue exploration script.
+- [x] Developed a downloader for the FAOSTAT production dataset.
+- [x] Implemented ZIP integrity verification and SHA-256 checksum generation.
+- [x] Inspected the downloaded archive and identified its five CSV files.
+- [x] Inspected the main normalized dataset schema.
+- [x] Inspected the geographical, element, flag, and item reference files.
+- [x] Generated a machine-readable schema inspection report.
+- [x] Extracted the main normalized CSV from the archive.
+- [x] Loaded the complete FAOSTAT dataset using PySpark.
+- [x] Profiled all 4,209,110 records.
+- [x] Identified geographical, commodity, and measurement-element distributions.
+- [x] Generated Nigeria-specific dataset statistics.
+- [x] Analysed observation flags, missing values, zero values, and invalid numeric records.
+- [x] Generated a machine-readable full dataset profiling report.
+
+### Upcoming Milestones
+
+- [ ] Conduct detailed Nigeria-specific agricultural data profiling.
+- [ ] Investigate commodity-level year coverage and measurement completeness.
+- [ ] Identify duplicate observations and assess data consistency.
+- [ ] Develop a structured FAOSTAT ingestion process.
+- [ ] Retrieve historical climate observations from NASA POWER.
+- [ ] Implement Bronze-layer ingestion.
+- [ ] Develop Silver-layer cleaning and transformation processes.
+- [ ] Integrate agricultural and climate observations.
+- [ ] Build Gold-layer analytical datasets.
+- [ ] Implement data quality checks and automated validation.
+- [ ] Develop automated tests using Pytest.
+- [ ] Configure GitHub Actions for continuous integration.
+- [ ] Develop visualisations and analytical reports.
 - [ ] Complete project documentation.
+
+## FAOSTAT Data Exploration and Engineering Decisions
+
+### API Investigation
+
+The initial investigation explored the FAOSTAT API endpoint:
+
+`https://faostatservices.fao.org/api/v1/en/groupsanddomains`
+
+The request returned HTTP 401 with a missing authorization header message.
+
+The documented API uses Bearer-token authentication. Since an API token was not available for the initial experiment, the project adopted FAOSTAT's publicly accessible bulk download catalogue instead.
+
+### Public Catalogue Exploration
+
+The public catalogue was accessed successfully using:
+
+`https://bulks-faostat.fao.org/production/datasets_E.json`
+
+The catalogue returned 69 available datasets.
+
+The QCL dataset was selected because it contains agricultural production statistics, including harvested area, production, and yield.
+
+### Dataset Schema Inspection
+
+The main normalized CSV contains 14 columns:
+
+| Column | Description |
+|---|---|
+| Area Code | Geographical area identifier |
+| Area Code (M49) | UN M49 geographical code |
+| Area | Country or geographical area |
+| Item Code | Commodity identifier |
+| Item Code (CPC) | Commodity classification code |
+| Item | Commodity name |
+| Element Code | Measurement element identifier |
+| Element | Measurement type |
+| Year Code | Year identifier |
+| Year | Observation year |
+| Unit | Measurement unit |
+| Value | Recorded observation |
+| Flag | Observation status |
+| Note | Additional metadata |
+
+The downloaded archive also contains reference files for geographical areas, elements, flags, and commodity codes.
+
+**Important engineering considerations identified:**
+
+1. Geographical and commodity identifiers must be preserved as strings because some codes contain leading zeros.
+2. Measurement elements must be distinguished because production, harvested area, and yield represent different metrics.
+3. Observation flags must be retained to preserve information about the reliability and origin of reported figures.
+4. Zero values should not automatically be interpreted as missing observations.
+5. Missing values must be handled according to their meaning rather than replaced indiscriminately.
+6. Measurement units must be considered when aggregating or comparing observations.
+
+### Full Dataset Profiling
+
+The complete FAOSTAT normalized dataset was loaded and profiled using PySpark.
+
+**Overall dataset findings:**
+
+- 4,209,110 records
+- 14 columns
+- 244 geographical areas
+- 301 commodities
+- 8 measurement elements
+- Year coverage from 1961 to 2024
+
+**Nigeria-specific findings:**
+
+- 17,539 records
+- 121 commodities
+- Year coverage from 1961 to 2024
+
+**Measurement element distribution:**
+
+| Measurement element | Records |
+|---|---:|
+| Production | 1,643,611 |
+| Area harvested | 893,484 |
+| Yield | 839,819 |
+| Producing Animals/Slaughtered | 313,081 |
+| Yield/Carcass Weight | 262,197 |
+| Stocks | 180,294 |
+| Milk Animals | 45,801 |
+| Laying | 30,823 |
+
+**Observation flag distribution:**
+
+| Flag | Records |
+|---|---:|
+| A | 1,837,346 |
+| E | 1,778,734 |
+| I | 387,557 |
+| X | 111,118 |
+| M | 94,355 |
+
+**Data quality findings:**
+
+| Data quality metric | Result |
+|---|---:|
+| Missing Value records | 94,355 |
+| Missing Note records | 4,125,820 |
+| Zero-value records | 73,671 |
+| Invalid numeric records | 0 |
+
+The missing `Value` count corresponds to the number of observations carrying the `M` flag.
+
+The `Note` column is largely empty because it contains optional supplementary information.
+
+The overall average across all measurement values is not treated as an analytical indicator because the dataset combines different measurement units and types.
+
+**Generated profiling reports:**
+
+- `reports/faostat_schema_inspection.json`
+- `reports/faostat_full_profile.json`
 
 ## Data Quality and Validation Strategy
 
-The pipeline will implement checks to identify:
+Data quality will be treated as a core part of the pipeline rather than an afterthought.
 
-- Missing values in important fields.
-- Duplicate records.
-- Invalid or inconsistent measurement units.
-- Incorrect date and year values.
-- Unexpected production and yield values.
-- Inconsistent country and commodity identifiers.
-- Potential anomalies in climate observations.
+Planned validation checks include:
 
-Validation results will be documented to improve the reliability and reproducibility of the pipeline.
+- Required-column validation.
+- Data type validation.
+- Null-value assessment.
+- Duplicate observation detection.
+- Valid geographical and commodity identifiers.
+- Valid measurement units.
+- Valid observation years.
+- Observation flag validation.
+- Numeric range checks.
+- Cross-layer record reconciliation.
+- Agricultural and climate date alignment.
 
-## Planned Analytical Questions
+Missing observations will be distinguished from genuine zero values, and source flags will be retained for downstream analysis.
 
-The final analytical datasets will support questions such as:
+## Analytical Questions
 
-1. How has Nigeria's crop production changed over time?
-2. Which crops have experienced the most significant changes in production?
-3. How have harvested area and crop yields evolved?
-4. What historical rainfall patterns can be observed?
-5. How have temperature patterns changed across the observation period?
-6. Are there observable associations between rainfall, temperature and crop production?
-7. Which crops demonstrate greater variation in production and yield?
+The completed analytical datasets will be used to investigate questions such as:
 
-## Reproducibility and Version Control
+1. How has Nigerian crop production changed over time?
+2. Which commodities have experienced the largest changes in production?
+3. How have harvested areas and crop yields evolved?
+4. How do rainfall patterns vary across the available historical period?
+5. How have temperature patterns changed over time?
+6. What statistical relationships exist between rainfall, temperature, and agricultural production?
+7. Do different commodities exhibit different relationships with climate variables?
 
-The project uses Git and GitHub for version control.
+These analyses will account for differences in geographical coverage, measurement units, missing observations, and historical reporting practices.
 
-Each completed development milestone is documented and pushed to the remote repository.
+## Reproducibility and Project Setup
 
-Raw datasets, virtual environments, temporary files and sensitive configuration files are excluded from version control through `.gitignore`.
+### 1. Clone the Repository
 
-The project maintains download metadata and SHA-256 checksums to support data provenance and reproducibility.
+```bash
+git clone https://github.com/ebukachukwu-hub/nigeria-agri-climate-pipeline.git
+```
 
-## Author
+### 2. Navigate into the Project
 
-**Enoch Echezonachukwu Kanikwu**
+```bash
+cd nigeria-agri-climate-pipeline
+```
 
-B.Sc. Statistics, First Class Honours
+### 3. Create a Virtual Environment
 
-Bowen University
+```bash
+python -m venv .venv
+```
 
-- GitHub: https://github.com/ebukachukwu-hub
-- LinkedIn: https://www.linkedin.com/in/enoch-kanikwu-470053305
+### 4. Activate the Environment
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+### 5. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 6. Run FAOSTAT Catalogue Exploration
+
+```bash
+python -m src.ingestion.explore_faostat_catalogue
+```
+
+### 7. Download the FAOSTAT Dataset
+
+```bash
+python -m src.ingestion.download_faostat
+```
+
+### 8. Inspect the FAOSTAT Archive
+
+```bash
+python -m src.ingestion.inspect_faostat
+```
+
+### 9. Profile the Complete FAOSTAT Dataset
+
+```bash
+python -m src.analytics.profile_faostat
+```
+
+**Prerequisites:** A compatible Java installation is required for local PySpark execution. The commands above assume the project dependencies and source files have been installed or obtained successfully.
+
+## Data and Version Control Policy
+
+Large source datasets and generated intermediate data files are not committed to GitHub.
+
+The repository tracks source code, configuration, documentation, tests, and selected analytical reports.
+
+The `.gitignore` file excludes:
+
+- Python virtual environments.
+- Python cache files.
+- Environment variables and secrets.
+- Downloaded raw datasets.
+- Extracted source CSV files.
+- Generated intermediate data files.
+
+This keeps the repository lightweight while allowing the pipeline to reproduce its datasets from their original sources.
+
+## Future Improvements
+
+Potential extensions include:
+
+- Scheduling automated data ingestion.
+- Incremental data processing.
+- Delta Lake storage and transaction management.
+- Cloud-based data storage and processing.
+- Pipeline monitoring and logging.
+- Automated data quality reporting.
+- Interactive dashboards.
+- More detailed geographical analysis.
+- Additional agricultural and environmental data sources.
 
 ## Project Status
 
-**Active development — FAOSTAT data profiling phase.**
+**Current stage:** FAOSTAT full dataset profiling completed. Detailed Nigeria-specific profiling is the next development milestone.
 
-This project is being developed as a practical demonstration of data engineering, statistical analysis and data-driven agricultural research.
+The project is being developed incrementally, with each milestone documented and version-controlled before the next stage begins.
+
+## Author
+
+**Kanikwu Enoch Echezonachukwu**
+
+B.Sc. Statistics | Data Engineering | Data Analytics
+
+- **GitHub:** https://github.com/ebukachukwu-hub
+- **LinkedIn:** https://www.linkedin.com/in/enoch-kanikwu-470053305
+
+---
+
+*This project is an independent data engineering and analytical project focused on agricultural data and climate trends in Nigeria.*

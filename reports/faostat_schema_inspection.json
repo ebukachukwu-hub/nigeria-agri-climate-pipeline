@@ -1,0 +1,245 @@
+{
+    "dataset": "FAOSTAT QCL",
+    "archive": "faostat_crop_production.zip",
+    "csv_files": [
+        {
+            "csv_filename": "Production_Crops_Livestock_E_All_Data_(Normalized).csv",
+            "column_count": 14,
+            "columns": [
+                "Area Code",
+                "Area Code (M49)",
+                "Area",
+                "Item Code",
+                "Item Code (CPC)",
+                "Item",
+                "Element Code",
+                "Element",
+                "Year Code",
+                "Year",
+                "Unit",
+                "Value",
+                "Flag",
+                "Note"
+            ],
+            "sample_size": 5,
+            "sample_records": [
+                {
+                    "Area Code": "2",
+                    "Area Code (M49)": "'004",
+                    "Area": "Afghanistan",
+                    "Item Code": "221",
+                    "Item Code (CPC)": "'01371",
+                    "Item": "Almonds, in shell",
+                    "Element Code": "5312",
+                    "Element": "Area harvested",
+                    "Year Code": "1961",
+                    "Year": "1961",
+                    "Unit": "ha",
+                    "Value": "0.000000",
+                    "Flag": "A",
+                    "Note": ""
+                },
+                {
+                    "Area Code": "2",
+                    "Area Code (M49)": "'004",
+                    "Area": "Afghanistan",
+                    "Item Code": "221",
+                    "Item Code (CPC)": "'01371",
+                    "Item": "Almonds, in shell",
+                    "Element Code": "5312",
+                    "Element": "Area harvested",
+                    "Year Code": "1962",
+                    "Year": "1962",
+                    "Unit": "ha",
+                    "Value": "0.000000",
+                    "Flag": "A",
+                    "Note": ""
+                },
+                {
+                    "Area Code": "2",
+                    "Area Code (M49)": "'004",
+                    "Area": "Afghanistan",
+                    "Item Code": "221",
+                    "Item Code (CPC)": "'01371",
+                    "Item": "Almonds, in shell",
+                    "Element Code": "5312",
+                    "Element": "Area harvested",
+                    "Year Code": "1963",
+                    "Year": "1963",
+                    "Unit": "ha",
+                    "Value": "0.000000",
+                    "Flag": "A",
+                    "Note": ""
+                },
+                {
+                    "Area Code": "2",
+                    "Area Code (M49)": "'004",
+                    "Area": "Afghanistan",
+                    "Item Code": "221",
+                    "Item Code (CPC)": "'01371",
+                    "Item": "Almonds, in shell",
+                    "Element Code": "5312",
+                    "Element": "Area harvested",
+                    "Year Code": "1964",
+                    "Year": "1964",
+                    "Unit": "ha",
+                    "Value": "0.000000",
+                    "Flag": "A",
+                    "Note": ""
+                },
+                {
+                    "Area Code": "2",
+                    "Area Code (M49)": "'004",
+                    "Area": "Afghanistan",
+                    "Item Code": "221",
+                    "Item Code (CPC)": "'01371",
+                    "Item": "Almonds, in shell",
+                    "Element Code": "5312",
+                    "Element": "Area harvested",
+                    "Year Code": "1965",
+                    "Year": "1965",
+                    "Unit": "ha",
+                    "Value": "0.000000",
+                    "Flag": "A",
+                    "Note": ""
+                }
+            ]
+        },
+        {
+            "csv_filename": "Production_Crops_Livestock_E_AreaCodes.csv",
+            "column_count": 3,
+            "columns": [
+                "Area Code",
+                "M49 Code",
+                "Area"
+            ],
+            "sample_size": 5,
+            "sample_records": [
+                {
+                    "Area Code": "2",
+                    "M49 Code": "'004",
+                    "Area": "Afghanistan"
+                },
+                {
+                    "Area Code": "5100",
+                    "M49 Code": "'002",
+                    "Area": "Africa"
+                },
+                {
+                    "Area Code": "3",
+                    "M49 Code": "'008",
+                    "Area": "Albania"
+                },
+                {
+                    "Area Code": "4",
+                    "M49 Code": "'012",
+                    "Area": "Algeria"
+                },
+                {
+                    "Area Code": "5200",
+                    "M49 Code": "'019",
+                    "Area": "Americas"
+                }
+            ]
+        },
+        {
+            "csv_filename": "Production_Crops_Livestock_E_Elements.csv",
+            "column_count": 2,
+            "columns": [
+                "Element Code",
+                "Element"
+            ],
+            "sample_size": 5,
+            "sample_records": [
+                {
+                    "Element Code": "5312",
+                    "Element": "Area harvested"
+                },
+                {
+                    "Element Code": "5423",
+                    "Element": "Extraction Rate"
+                },
+                {
+                    "Element Code": "5313",
+                    "Element": "Laying"
+                },
+                {
+                    "Element Code": "5318",
+                    "Element": "Milk Animals"
+                },
+                {
+                    "Element Code": "5319",
+                    "Element": "Prod Popultn"
+                }
+            ]
+        },
+        {
+            "csv_filename": "Production_Crops_Livestock_E_Flags.csv",
+            "column_count": 2,
+            "columns": [
+                "Flag",
+                " Description"
+            ],
+            "sample_size": 5,
+            "sample_records": [
+                {
+                    "Flag": "A",
+                    " Description": "Official figure"
+                },
+                {
+                    "Flag": "E",
+                    " Description": "Estimated value"
+                },
+                {
+                    "Flag": "I",
+                    " Description": "Value imputed by a receiving agency"
+                },
+                {
+                    "Flag": "M",
+                    " Description": "Missing value; data cannot exist"
+                },
+                {
+                    "Flag": "X",
+                    " Description": "Figure from external organization"
+                }
+            ]
+        },
+        {
+            "csv_filename": "Production_Crops_Livestock_E_ItemCodes.csv",
+            "column_count": 3,
+            "columns": [
+                "Item Code",
+                "CPC Code",
+                "Item"
+            ],
+            "sample_size": 5,
+            "sample_records": [
+                {
+                    "Item Code": "809",
+                    "CPC Code": "'01929.07",
+                    "Item": "Abaca; manila hemp; raw"
+                },
+                {
+                    "Item Code": "800",
+                    "CPC Code": "'01929.06",
+                    "Item": "Agave fibres; raw; n.e.c."
+                },
+                {
+                    "Item Code": "221",
+                    "CPC Code": "'01371",
+                    "Item": "Almonds; in shell"
+                },
+                {
+                    "Item Code": "711",
+                    "CPC Code": "'01654",
+                    "Item": "Anise; badian; coriander; cumin; caraway; fennel and juniper berries; raw"
+                },
+                {
+                    "Item Code": "515",
+                    "CPC Code": "'01341",
+                    "Item": "Apples"
+                }
+            ]
+        }
+    ]
+}
